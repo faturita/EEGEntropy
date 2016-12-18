@@ -126,42 +126,38 @@ $^{1}$ \quad Computer Engineering Department, Instituto Tecnológico de Buenos A
 \item   Main aim and principal conclusions.
 \end{enumerate}
 
-Cybathlon
+\begin{enumerate}[leftmargin=*,labelsep=3mm]
+\item El paper tiene un foco general en EEG y rapidamente se centra en BCI como una prueba del método.
+\item La relevancia de estudiar métodos de análisis de EEG para pacientes con ALS.
+\item Ofrece una Receta de cómo implementar un esquema simple de detección de P300 y ofrece una comparativa contra el paper de las italianas.
+\item La transversalidad del método de poder detectar eventos rítmicos asi como transientes como p300.
+\item La posibilidad de utilizarlo para reconocer, fuertemente un patron particular y con la flexibilidad de detectar variantes basado en las poblaciones de descriptores (esta es mi hipótesis de porque funciona, porque yo vi que el método se hace pelota con pequeñas variantes de la señal).
+\item La importancia del averaging de EEG y sus desbalanceos, puntualizando que en el paper original
+\item Que la caída en la clasificación no cae significativamente aún bajando la cantidad de repeticiones requeridas para el averaging.
+\item ¿ Por qué da mejor en PO8 que en Cz y Pz que son los canales P300 ?  (como future work).
+\end{enumerate}
 
-
-x) El paper tiene un foco general en EEG y rapidamente se centra en BCI como una prueba del método.
-x) La relevancia de estudiar métodos de análisis de EEG para pacientes con ALS.
-x) Ofrece una Receta de cómo implementar un esquema simple de detección de P300 y ofrece una comparativa contra el paper de las italianas.
-x) La transversalidad del método de poder detectar eventos rítmicos asi como transientes como p300.
-x) La posibilidad de utilizarlo para reconocer, fuertemente un patron particular y con la flexibilidad de detectar variantes basado en las poblaciones de descriptores (esta es mi hipótesis de porque funciona, porque yo vi que el método se hace pelota con pequeñas variantes de la señal).
-x) La importancia del averaging de EEG y sus desbalanceos, puntualizando que en el paper original
-x) Que la caída en la clasificación no cae significativamente aún bajando la cantidad de repeticiones requeridas para el averaging.
-x) ¿ Por qué da mejor en PO8 que en Cz y Pz que son los canales P300 ?  (como future work).
 
 
 Although recently impressive advances in neuroimagining techniques has pushed EEG, Electroencephalography technology a little bit out of the way in clinical context, where it has always being used since its discovery by Berger.
 
-Their versatility, ease of use, temporal resolution, ease and development of fabrication, and the explosion as a consumer devices, is pushing EEG devices to become the de facto non invasive method to access and harness brain information.
+Their versatility, ease of use, temporal resolution, ease and development of fabrication, and the explosion as a consumer devices, is pushing EEG devices to become the de-facto non invasive method to access and harness brain information.
 
 Key contribution to this development has been the field of Brain Computer Interfaces, which is the development of a new channel of communication particularly aimed to person with some degree of neuro degenerative disease.
 
-One very remarkable aspect of this communication channel is the ability to transmit some general cognitive state, like alertness, drowsiness, boredom, and so on, which can very helpful particularly in rehabilitation procedures. \citep{Guger2009a}.
+One very remarkable aspect of this communication channel is the ability to volitionally transmit information from the CNS, Central Nervous System, to a computer device and from there use that information to drive wheelchair or as input in a speller application \citep{Guger2009a}, or a rehabilitation procedure \citep{Jure2016} in connection to FES.
 
-One of the most shocking reasons is that we can use the capacity of ML techniques to automatically explore the signal, by using these new features.
+EEG signals are remarkably complex and has been characterized as a non-stationary stochastic process with even sometimes their baseline activity is near random (CITE TEODIANO BASTOS).
 
-Additionally, they have a high variability between different subjects and even between different moments for the same subject.  This inherent complexity comes from  is a real challenge when it is required to extract information from raw EEG signals.
+Additionally, they have a high variability between different subjects and even between different moments for the same subject.  This inherent complexity is a real challenge when it is required to extract information from raw EEG signals.
 
-Signal is complex and it is difficult to find those values which are not variable.
+Hence, inevitably, it is often necessary to implement many distinct and specialized algorithmic methods, to filter the signal, enhance its SNR, and try to determine some meaning out of it.  
 
-Due to this inner complexity, it is often necessary to implement many distinct and specialized algorithmic methods, to filter the signal, classify it, and try to determine some meaning out of it.  
-
-In this work EEG signals from ALS patients are offline processed with this radically different and horizontal approach.  This is the continuation of the work presented here and here \citep{Ramele2016}, which was previously applied to rythmic patterns.
+In this work a new method to characterize EEG signals is presented, expanded and detailed.  Its validity is shown by processing offline data from ALS patients.  This is the continuation of the work previously presented \citep{Ramele2016}, which was applied mainly to rythmic patterns.
 
 The same methodological algorithm can be used to process rhythmic EEG markers or paradigms and at the same time to analyze spatiotemporal phenomena like ERP, particularly P300 \citep{Ramele2016}.
 
 This method is based on a morphological analysis of the shape of the EEG signal.
-
-Successful applications of BCI has been applied to rehabilitation \citep{Jure2016}.
 
 This paper reports on a study done to address
 the hypothesis that communication task complexity
@@ -170,9 +166,7 @@ description) is correlated with BCI performance accuracy
 and P300 characteristics.
 
 
-BCI accuracy
-was calculated as the percentage of attempted selections
-that matched the intended selection.
+
 
 \section{Materials and Methods}
 
@@ -184,16 +178,14 @@ We use the dataset 008-2014 published on the BNCI-Horizon website.  This consort
 
 \subsection{Experimental protocol}
 
-The protocol is explained [HERE] but can be summarized as follows:  8 subjects affected by different levels of ALS disease, were used to generate all the data. The P300 task was meant to spell 7 words of 5 letter each.  The first 3 runs were used for training and the remaining 4 for testing with visual feedback.  A trial, for this experiment, was defined as each attempt to select a letter from the speller, and it was composed of 10 repetions of flashes of 6 rows and 6 columns of the matrix, yielding 120 repetitions.  Flashing of row/columns was performed for 0.125 s, following by a resting period of the same size.
+The protocol is explained \citep{Riccio2013} but can be summarized as follows:  8 subjects affected by different levels of ALS disease, were used to generate all the data. The P300 task was meant to spell 7 words of 5 letter each.  The first 3 runs were used for training and the remaining 4 for testing with visual feedback.  A trial, for this experiment, was defined as each attempt to select a letter from the speller, and it was composed of 10 repetitions of flashes of 6 rows and 6 columns of the matrix, yielding 120 repetitions.  Flashing of row/columns was performed for 0.125 s, following by a resting period of the same size.  After 120 repetions and intertrial pause is performed to start with the following letter.
 
-This dataset was recorded from a healthy subject during a no-feedback session. She/he sat in a normal chair with relaxed arms resting on the table and fingers in the standard typing position at the computer keyboard. The task was to press with the index and little fingers the corresponding keys in a self-chosen order and timing 'self-paced key typing'. The experiment consisted of 3 sessions of 6 minutes each. All sessions were conducted on the same day with some minutes break in-between. Typing was done at an average speed of 1 key per second.  
+All sessions were conducted on the same day with some minutes break in-between. Typing was done at an average speed of 1 key per second.  
 
 \subsection{Morphological Signal Analysis}
 
-Due to the inner complexity of EEG signals, several approaches and methods has been applied to decode them.  Of particular interests are morphological signal analysis 
-Paper del chabon del ITBA que detalla bien los diferentes metodos, 
-
-paper de los mexicanos \citep{Alvarado-Gonzalez2016}.
+Due to the inner complexity of EEG signals, several approaches and methods have been applied to decode them.  Of particular interests are morphological signal analysis 
+CITE (Paper del chabon del ITBA que detalla bien los diferentes metodos) \citep{Alvarado-Gonzalez2016}.
 
 Morphological or 
 
@@ -206,9 +198,6 @@ polyspike
 slow wave complex
 
 shape domain
-
-
-
 
 \subsubsection{P300}
 
@@ -239,22 +228,22 @@ BCI Simulation vs k-fold cross validation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
 
-Results are shown in the following chart.
+In Fig. \ref{fig:subjectaveraged} the grand average (point-to-point) of for all the subjects is shown.  The P300 characteristic curve can be seen particularly in subjects 6, and 7 and in a lesser extend in the remaining subjects. In order to obtain a valid binary classification on averaged signals, particular care was observed to avoid unbalanced samples, because that may introduce a bias in the classification procedure (signal variance is proportional to the root of the number of samples and the procedure would be discriminating signals with different variances).it is quite likely that the data will be unbalanced (that is, an unequal number of trials in each condition)
+
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=18cm]{subjectaverageds4.eps}
 \caption{This is a figure, Schemes follow the same formatting. If there are multiple panels, they should be listed as: (\textbf{a}) Description of what is contained in the first panel. (\textbf{b}) Description of what is contained in the second panel. Figures should be placed in the main text near to the first time they are cited. A caption on a single line should be centered.}
+\label{fig:subjectaveraged}
 \end{figure}
 
-Contrary to the literature (\citep{Huggins2016,Jure2016}) the best performing channels were not Cz and Pz and instead Pz.
-
-GRAND AVERAGES
-
-it is quite likely that the data will be unbalanced (that is, an unequal number of trials in each condition)
+Results are shown in the following chart where BCI accuracy
+was calculated as the percentage of successful predictions
+that matched the proposed selection in a copy-spelling approach (CITE TAYLOR AND  FRANCOS PAPER).
 
 \begin{table}[H]
-\caption{Results obtained for Accuracy levels by k-fold cross validation.}
+\caption{Results obtained for Accuracy levels by k-fold cross validation. The values reported for Cz are reproduced here for comparison. Cz values of BCI accuracies can be seen as long as the accuracy levels obtained for the best performing channels, for each subject.}
 \centering
 %% \tablesize{} %% You can specify the fontsize here, e.g.  \tablesize{\footnotesize}. If commented out \small will be used.
 \begin{tabular}{cccc}
@@ -273,6 +262,8 @@ it is quite likely that the data will be unbalanced (that is, an unequal number 
 \end{tabular}
 \end{table}
 
+Contrary to the literature (\citep{Huggins2016,Jure2016}) the best performing channels were not Cz and Pz but instead the occipital channels PO1 and P02 (5 against 3).
+
 The ITR, or BTR, in the case of reactive BCIs (CITE WOLPAW) strongly depends on the amount of averaging required to transmit a valid and robust selection.  If the amount of repetitions is reduced for each subject, performing a BCI Simulation can be shown on Fig. \ref{fig:singletrial}
 
 
@@ -290,11 +281,13 @@ This method, different from other methods which is based on the nonlinearity of 
 
 is also based on how the image look like.
 
-Results of one against the other
-
 SNR of p300 and how to detect it
 
-Check if you can use this to detect any kind of transient signbal
+Check if you can use this to detect any kind of transient signal.
+
+Compare if it is possible with the descriptors from one subject, discriminate the others.
+
+Channal identification based on the metric distance between the bags
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
