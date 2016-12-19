@@ -84,7 +84,7 @@ $^{1}$ \quad Computer Engineering Department, Instituto Tecnológico de Buenos A
 \abstract{A single paragraph of about 200 words maximum. For research articles, abstracts should give a pertinent overview of the work. We strongly encourage authors to use the following style of structured abstracts, but without headings: 1) Background: Place the question addressed in a broad context and highlight the purpose of the study; 2) Methods: Describe briefly the main methods or treatments applied; 3) Results: Summarize the article's main findings; and 4) Conclusion: Indicate the main conclusions or interpretations. The abstract should be an objective representation of the article, it must not contain results which are not presented and substantiated in the main text and should not exaggerate the main conclusions.This is great.  We had tremendous results.  Our results are so great that nobody will believe that we actually managed to have them !}
 
 % Keywords
-\keyword{EEG; BCI; P300; ALS; classification; hog; sift}
+\keyword{electroencephalography (EEG); BCI; P300; ALS; classification; HOG; SIFT}
 
 % The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
 %\PACS{J0101}
@@ -138,22 +138,23 @@ $^{1}$ \quad Computer Engineering Department, Instituto Tecnológico de Buenos A
 \end{enumerate}
 
 
+Although recently impressive advances in neuroimagining (particularly radio-nuclear and radiological scanning methods) \citep{Schomer2010} techniques has pushed the traditional EEG, Electroencephalography technology a little bit out of the way in clinical context, the advent and advances in digitalized counterparts has pushed for a revamping of the entire discipline.
 
-Although recently impressive advances in neuroimagining techniques has pushed EEG, Electroencephalography technology a little bit out of the way in clinical context, where it has always being used since its discovery by Berger.
-
-Their versatility, ease of use, temporal resolution, ease and development of fabrication, and the explosion as a consumer devices, is pushing EEG devices to become the de-facto non invasive method to access and harness brain information.
+Their versatility, ease of use, temporal resolution, ease of development and fabrication, and the explosion as consumer devices, is pushing EEG devices to become the de-facto non invasive method to access and harness brain information.
 
 Key contribution to this development has been the field of Brain Computer Interfaces, which is the development of a new channel of communication particularly aimed to person with some degree of neuro degenerative disease.
 
-One very remarkable aspect of this communication channel is the ability to volitionally transmit information from the CNS, Central Nervous System, to a computer device and from there use that information to drive wheelchair or as input in a speller application \citep{Guger2009a}, or a rehabilitation procedure \citep{Jure2016} in connection to FES.
+One very remarkable aspect of this communication channel is the ability to volitionally transmit information from the CNS, Central Nervous System, to a computer device and from there use that information to drive wheelchair or as input in a speller application \citep{Guger2009a}, or a rehabilitation procedure \citep{Jure2016}.  The golden goal of BCI is to implement a new complete and alternative pathway to restore motion \citep{WolpawJonathanR2012}.
 
-EEG signals are remarkably complex and has been characterized as a non-stationary stochastic process with even sometimes their baseline activity is near random (CITE TEODIANO BASTOS).
+EEG signals are remarkably complex and has been characterized as a non-stationary stochastic process with even sometimes their baseline activity is very close to a random process (CITE TEODIANO BASTOS).
 
 Additionally, they have a high variability between different subjects and even between different moments for the same subject.  This inherent complexity is a real challenge when it is required to extract information from raw EEG signals.
 
 Hence, inevitably, it is often necessary to implement many distinct and specialized algorithmic methods, to filter the signal, enhance its SNR, and try to determine some meaning out of it.  
 
-In this work a new method to characterize EEG signals is presented, expanded and detailed.  Its validity is shown by processing offline data from ALS patients.  This is the continuation of the work previously presented \citep{Ramele2016}, which was applied mainly to rythmic patterns.
+The EEG markers (Lotte again) that can be used to transmit volitionally information are limited, and each one of them has a particular set or combination of methods to decode them. adaptative and coadaptation is a must.
+
+In this work a new method to characterize EEG signals is presented, expanded and detailed.  Its validity is verified by processing off-line data for ALS patients.  This is the continuation of the work previously presented \citep{Ramele2016}, which was previously applied exclusively to rhythmic patterns.
 
 The same methodological algorithm can be used to process rhythmic EEG markers or paradigms and at the same time to analyze spatiotemporal phenomena like ERP, particularly P300 \citep{Ramele2016}.
 
@@ -165,14 +166,14 @@ the hypothesis that communication task complexity
 description) is correlated with BCI performance accuracy
 and P300 characteristics.
 
-
+This paper reports a straightforward method to, first characterize EEG signals based on the identification of their morphological shapes, and how this characterization can be used to implement a BCI scheme to identify Event Related Potentials, particularly the well-known P300, on an off-line and public dataset.
 
 
 \section{Materials and Methods}
 
-Besides new novel applications of BCI, the core value of the entire discipline is to provide communication assistance to patients.  It is understood that people suffering from ALS, even though the disease do not harm the CNS, their brain signals and suffer slow and deterioriating changes that lead to more complex patterns to be detected [cite]
+Besides new novel applications of BCI, the core value of the entire discipline is to provide communication assistance to patients.  It is understood that people suffering from ALS, even though the disease do not harm the CNS, their brain signals and suffer slow and deteriorating changes that lead to more complex patterns to be detected [cite]
 
-Although they are used (PAPER DE P300 donde dice que se usa en los laboratorios) they still lack the bla bla bla CITE LOTTE BOOK \citep{Huggins2016}
+Although this quickly developing discipline has gained mainstream public awareness, held a particular  Olympics \citep{Cybatholn} and even been broadcasted in the last World Cup,  they are used \citep{Huggins2016}) they still lack the necessary robustness, and its performance still lacks well behind any other method of human computer interaction, including any kind of remaining movement \citep{Clerc}.
 
 We use the dataset 008-2014 published on the BNCI-Horizon website.  This consortium of companies and universities were developed under the umbrella of the EU to define, provide guidance for BCI development \citep{Riccio2013}.
 
@@ -223,7 +224,9 @@ The methods for averaging.
 
 Finally the classification is carried out by using the NBNN algorithm which can be described as follows.
 
-BCI Simulation vs k-fold cross validation
+generative
+
+BCI Simulation vs k-fold cross validation.  It is quite known and understood that because the same experience will not generate the same markers in the EEG, BCI Simulation is sometimes better suited to understand how the device will operate on a real online application (the graeat variability of BCI).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
@@ -233,7 +236,7 @@ In Fig. \ref{fig:subjectaveraged} the grand average (point-to-point) of for all 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=18cm]{subjectaverageds4.eps}
+\includegraphics[width=18cm]{subjectaveraged.eps}
 \caption{This is a figure, Schemes follow the same formatting. If there are multiple panels, they should be listed as: (\textbf{a}) Description of what is contained in the first panel. (\textbf{b}) Description of what is contained in the second panel. Figures should be placed in the main text near to the first time they are cited. A caption on a single line should be centered.}
 \label{fig:subjectaveraged}
 \end{figure}
@@ -301,6 +304,12 @@ Si el desempeño da parecido hay que escribirlo ya que con menos valores se perm
 
 We also achieved single trial classification for just one subject.
 
+Databases of descriptors.  Flexibility of the descriptor in terms of configuration and size (reference variants of SIFT on lower dimensiones).
+
+Visual inspections enhancement tools.
+
+Understanding and expanding the use of this tool to automatically classify patterns in EEG, that are specifically identified by their shapes.  This tool may provide the ability to help the physician to locate this patterns particularly in long-periods of time or long recordings. 
+\citep{Hartman2005}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Subsection}
@@ -387,7 +396,7 @@ This section is not mandatory, but can be added to the manuscript if the discuss
 \acknowledgments{This project was supported by the ITBACyT-15 funding program issued by ITBA University.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\authorcontributions{Juan Miguel Santos organized the project and conceived the idea. All the authors equally worked in the completion of this project.}
+\authorcontributions{Juan Miguel Santos lead the project and conceived the idea. All the authors equally worked in the completion of this project.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \conflictofinterests{The authors declare no conflict of interest.} 
