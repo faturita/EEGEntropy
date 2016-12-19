@@ -62,7 +62,7 @@
 \Title{EEG characterization and classification based on the histograms of visual gradients of plots}
 
 % Authors, for the paper (add full first names)
-\Author{Rodrigo Ramele $^{1,\dagger,\ddagger}$, Ana Julia Villar $^{1,\ddagger}$ and Juan Miguel Santos  $^{1,\ddagger}$*}
+\Author{Rodrigo Ramele $^{1,\dagger}$, Ana Julia Villar $^{1}$ and Juan Miguel Santos  $^{1}$*}
 % Authors, for metadata in PDF
 \AuthorNames{Rodrigo Ramele, Ana Julia Villar and Juan Miguel Santos}
 
@@ -75,7 +75,7 @@ $^{1}$ \quad Computer Engineering Department, Instituto Tecnológico de Buenos A
 
 % Current address and/or shared authorship
 \firstnote{Current address: C1437FBH Lavarden 315, Ciudad Autónoma de Buenos Aires, Argentina} 
-\secondnote{These authors contributed equally to this work.}
+
 
 % Simple summary
 %\simplesumm{}
@@ -138,42 +138,40 @@ $^{1}$ \quad Computer Engineering Department, Instituto Tecnológico de Buenos A
 \end{enumerate}
 
 
-Although recently impressive advances in neuroimagining (particularly radio-nuclear and radiological scanning methods) \citep{Schomer2010} techniques has pushed the traditional EEG, Electroencephalography technology a little bit out of the way in clinical context, the advent and advances in digitalized counterparts has pushed for a revamping of the entire discipline.
+Although recently impressive advances in neuroimagining techniques (particularly radio-nuclear and radiological scanning methods) \citep{Schomer2010} has diminished the prospects of the traditional EEG, Electroencephalography, the advent and development in digitalized devices has pushed for a revamping of the entire discipline.
 
-Their versatility, ease of use, temporal resolution, ease of development and fabrication, and the explosion as consumer devices, is pushing EEG devices to become the de-facto non invasive method to access and harness brain information.
+Their versatility, ease of use, temporal resolution, ease of development and fabrication, and its proliferation as consumer devices, is pushing EEG devices to become the de-facto non invasive method to access and harness brain information.
 
-Key contribution to this development has been the field of Brain Computer Interfaces, which is the development of a new channel of communication particularly aimed to person with some degree of neuro degenerative disease.
+Key contribution to this development has been the field of Brain Computer Interfaces (BCI) \citep{Wolpaw Seminar paper} which is the pursuit of the development of a new channel of communication particularly aimed to persons affected by neuro-degenerative  diseases.
 
-One very remarkable aspect of this communication channel is the ability to volitionally transmit information from the CNS, Central Nervous System, to a computer device and from there use that information to drive wheelchair or as input in a speller application \citep{Guger2009a}, or a rehabilitation procedure \citep{Jure2016}.  The golden goal of BCI is to implement a new complete and alternative pathway to restore motion \citep{WolpawJonathanR2012}.
+One very noteworthy aspect of this communication channel is the ability to volitionally transmit information from the CNS, Central Nervous System, to a computer device and from there use that information to control a wheelchair \citep{Carlson2013}, as input to a speller application \citep{Guger2009a}, or as aiding tool in a rehabilitation procedure \citep{Jure2016}.  The holly grail of BCI is to implement a new complete and alternative pathway to restore lost locomotion \citep{WolpawJonathanR2012}.
 
-EEG signals are remarkably complex and has been characterized as a non-stationary stochastic process with even sometimes their baseline activity is very close to a random process (CITE TEODIANO BASTOS).
-
-Additionally, they have a high variability between different subjects and even between different moments for the same subject.  This inherent complexity is a real challenge when it is required to extract information from raw EEG signals.
+EEG signals are remarkably complex and have been characterized as a multichannel non-stationary stochastic process and even considered as sufficiently random as to be considered as a source of pseudo random number generator \citep{Chen2014}. Additionally, they have a high variability between different subjects and even between different moments for the same subject, requiring an adaptive and co-adaptive calibration and learning procedure \citep{Clerc}.  This imposes an outstanding challenge that is necessary to overcome in order to extract information from raw EEG signals.
 
 Hence, inevitably, it is often necessary to implement many distinct and specialized algorithmic methods, to filter the signal, enhance its SNR, and try to determine some meaning out of it.  
 
-The EEG markers (Lotte again) that can be used to transmit volitionally information are limited, and each one of them has a particular set or combination of methods to decode them. adaptative and coadaptation is a must.
+EEG markers \citep{Clerc} that can be used to transmit volitionally information are limited, and each one of them has a particular set or combination of methods to decode them. 
 
-In this work a new method to characterize EEG signals is presented, expanded and detailed.  Its validity is verified by processing off-line data for ALS patients.  This is the continuation of the work previously presented \citep{Ramele2016}, which was previously applied exclusively to rhythmic patterns.
+In this work a new method to characterize EEG signals is presented, expanded and detailed.  Its validity is verified by processing off-line data for ALS patients.  This is the continuation of the work previously presented \citep{Ramele2016}, which was applied to rhythmic patterns.
 
-The same methodological algorithm can be used to process rhythmic EEG markers or paradigms and at the same time to analyze spatiotemporal phenomena like ERP, particularly P300 \citep{Ramele2016}.
+The same algorithm can be used to process rhythmic EEG markers or paradigms and at the same time to analyze spatiotemporal phenomena like ERP, particularly P300 \citep{Ramele2016}.
 
-This method is based on a morphological analysis of the shape of the EEG signal.
+This method is based on a morphological analysis of the shape of the EEG signal and was inspired by mimicking what traditionally electroencephalographers have been performing for almost a century: visually inspecting the raw signals.
 
-This paper reports on a study done to address
-the hypothesis that communication task complexity
-(copy-spelling vs. novel text generation of a picture
-description) is correlated with BCI performance accuracy
-and P300 characteristics.
+%This paper reports on a study done to address
+%the hypothesis that communication task complexity
+%(copy-spelling vs. novel text generation of a picture
+%description) is correlated with BCI performance accuracy
+%and P300 characteristics.
 
 This paper reports a straightforward method to, first characterize EEG signals based on the identification of their morphological shapes, and how this characterization can be used to implement a BCI scheme to identify Event Related Potentials, particularly the well-known P300, on an off-line and public dataset.
 
 
 \section{Materials and Methods}
 
-Besides new novel applications of BCI, the core value of the entire discipline is to provide communication assistance to patients.  It is understood that people suffering from ALS, even though the disease do not harm the CNS, their brain signals and suffer slow and deteriorating changes that lead to more complex patterns to be detected [cite]
+Besides new novel applications of BCI, the core value of the entire discipline is to provide communication assistance to people affected by neuro-degenerative diseases.  It is understood that people suffering from ALS, even though the disease do not harm the CNS, their brain signals do suffer slow and deteriorating changes that lead to different EEG  patterns\citep{Riener2014}.
 
-Although this quickly developing discipline has gained mainstream public awareness, held a particular  Olympics \citep{Cybatholn} and even been broadcasted in the last World Cup,  they are used \citep{Huggins2016}) they still lack the necessary robustness, and its performance still lacks well behind any other method of human computer interaction, including any kind of remaining movement \citep{Clerc}.
+Although this quickly developing discipline has gained mainstream public awareness, held a peculiar Olympics \citep{Riener2014} and even been broadcasted during the last World Cup,  they are used \citep{Huggins2016}) they still lack the necessary robustness, and its performance still lacks well behind any other method of human computer interaction, including any kind of remaining movement \citep{Clerc}.
 
 We use the dataset 008-2014 published on the BNCI-Horizon website.  This consortium of companies and universities were developed under the umbrella of the EU to define, provide guidance for BCI development \citep{Riccio2013}.
 
@@ -218,7 +216,7 @@ What we do is take the signal and plot it.  Thats all folks.
 
 \subsubsection{Signal Averaging}
 
-The methods for averaging.
+The methods for averaging.  \citep{Liang2008}
 
 \subsubsection{Classification}
 
@@ -231,48 +229,48 @@ BCI Simulation vs k-fold cross validation.  It is quite known and understood tha
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
 
-In Fig. \ref{fig:subjectaveraged} the grand average (point-to-point) of for all the subjects is shown.  The P300 characteristic curve can be seen particularly in subjects 6, and 7 and in a lesser extend in the remaining subjects. In order to obtain a valid binary classification on averaged signals, particular care was observed to avoid unbalanced samples, because that may introduce a bias in the classification procedure (signal variance is proportional to the root of the number of samples and the procedure would be discriminating signals with different variances).it is quite likely that the data will be unbalanced (that is, an unequal number of trials in each condition)
+In Figure \ref{fig:subjectaveraged} the grand average (point-to-point) for all the subjects is shown.  The P300 characteristic curve can be seen particularly in subjects 2, and 6 and in a lesser extend in the remaining subjects. In order to obtain a valid binary classification on averaged signals, particular care was observed to avoid unbalanced samples, because that may introduce a bias in the classification procedure (signal variance is proportional to the square root of the number of samples and the procedure would be discriminating signals with different variances).Particularly in the case of the P300 response, the oddball paradigm requires that one of the stimulus need to be infrequent so that will unavoidably force that the data will be unbalanced (that is, an unequal number of trials in each condition).
 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=18cm]{subjectaveraged.eps}
+\includegraphics[width=16cm]{subjectaveraged.eps}
 \caption{This is a figure, Schemes follow the same formatting. If there are multiple panels, they should be listed as: (\textbf{a}) Description of what is contained in the first panel. (\textbf{b}) Description of what is contained in the second panel. Figures should be placed in the main text near to the first time they are cited. A caption on a single line should be centered.}
 \label{fig:subjectaveraged}
 \end{figure}
 
-Results are shown in the following chart where BCI accuracy
-was calculated as the percentage of successful predictions
-that matched the proposed selection in a copy-spelling approach (CITE TAYLOR AND  FRANCOS PAPER).
+Results are shown in Table \ref{tab:results} where BCI accuracy
+for the Cz channel is calculated and compared with the values obtained by the published of the dataset.  Additionally the best performing channel is informed and its accuracy value.  It is of particular interest that using this method, the best performing channel was not always Cz, and instead occipital channels PO8 and PO7 showed very good performance indeed \citep{Huggins2016,Jure2016}.
+
+ (CITE TAYLOR AND  FRANCOS PAPER).
 
 \begin{table}[H]
 \caption{Results obtained for Accuracy levels by k-fold cross validation. The values reported for Cz are reproduced here for comparison. Cz values of BCI accuracies can be seen as long as the accuracy levels obtained for the best performing channels, for each subject.}
 \centering
 %% \tablesize{} %% You can specify the fontsize here, e.g.  \tablesize{\footnotesize}. If commented out \small will be used.
-\begin{tabular}{cccc}
+\begin{tabular}{ccccc}
 \toprule
-\textbf{Cz}	& \textbf{Cz}	& \textbf{Best Channel}	& \textbf{Performance}\\
+\textbf{Participants}	& \textbf{Original ACC at Cz}	& \textbf{ACC at Cz}	& \textbf{Best Performing Channel}	& \textbf{Performance}\\
 \midrule
-0.845000     & 0.794286 & 2 & 0.794286 $\pm$ 0.011952 \\
-0.863000     & 0.811429 & 7 & 0.934286 $\pm$ 0.011200 \\
-0.872000     & 0.780000 & 2 & 0.780000 $\pm$ 0.031843 \\
-0.859000     & 0.675714 & 8 & 0.904286 $\pm$ 0.013232 \\
-0.862000     & 0.801429 & 7 & 0.932857 $\pm$ 0.008400 \\
-0.886000     & 0.964286 & 2 & 0.964286 $\pm$ 0.010435 \\
-0.886000     & 0.784286 & 7 & 0.930000 $\pm$ 0.009744 \\
-0.923000     & 0.908571 & 7 & 0.997143 $\pm$ 0.003733 \\
+1     &   0.84 &   0.79 & Cz  &   0.79 $\pm$ 0.01 \\
+2     &   0.86 &   0.81 & PO7 &   0.93 $\pm$ 0.01 \\
+3     &   0.87 &   0.78 & Cz  &   0.78 $\pm$ 0.03 \\
+4     &   0.86 &   0.68 & PO8 &   0.90 $\pm$ 0.01 \\
+5     &   0.86 &   0.80 & PO7 &   0.93 $\pm$ 0.01 \\
+6     &   0.89 &   0.96 & Cz  &   0.96 $\pm$ 0.01 \\
+7     &   0.89 &   0.78 & PO7 &   0.93 $\pm$ 0.01 \\
+8     &   0.92 &   0.91 & PO7 &   1.00 $\pm$ 0.00 \\
 \bottomrule
 \end{tabular}
+\label{tab:results}
 \end{table}
 
-Contrary to the literature (\citep{Huggins2016,Jure2016}) the best performing channels were not Cz and Pz but instead the occipital channels PO1 and P02 (5 against 3).
-
-The ITR, or BTR, in the case of reactive BCIs (CITE WOLPAW) strongly depends on the amount of averaging required to transmit a valid and robust selection.  If the amount of repetitions is reduced for each subject, performing a BCI Simulation can be shown on Fig. \ref{fig:singletrial}
+The ITR, or BTR, in the case of reactive BCIs \citep{WolpawJonathanR2012} strongly depends on the amount of signal averaging required to transmit a valid and robust selection.  There is a trade-off that needs to be maintained between the amount of repetitions for each trial  \ref{fig:singletrial}
 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=18cm]{singletriality.eps}
+\includegraphics[width=16cm]{singletriality.eps}
 \caption{This is a figure, Schemes follow the same formatting. If there are multiple panels, they should be listed as: (\textbf{a}) Description of what is contained in the first panel. (\textbf{b}) Description of what is contained in the second panel. Figures should be placed in the main text near to the first time they are cited. A caption on a single line should be centered.}
 \label{fig:singletrial}
 \end{figure}
@@ -405,9 +403,9 @@ This section is not mandatory, but can be added to the manuscript if the discuss
 %% optional
 \abbreviations{The following abbreviations are used in this manuscript:\\
 
-\noindent MDPI: Multidisciplinary Digital Publishing Institute\\
-DOAJ: Directory of open access journals\\
-TLA: Three letter acronym\\
+\noindent EEG: Multidisciplinary Digital Publishing Institute\\
+BCI: Directory of open access journals\\
+SNR: Three letter acronym\\
 LD: linear dichroism}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
