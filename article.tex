@@ -80,7 +80,7 @@ $^{1}$ \quad Computer Engineering Department, Instituto Tecnológico de Buenos A
 %\simplesumm{}
 
 % Abstract (Do not use inserted blank lines, i.e. \\) 
-\abstract{The analysis of Electroencephalograpy (EEG) signals for Amyotrophic Lateral Sclerosis (ALS) patients is of ulterior importance to elucidate different patterns or markers that could be potentially used to aid in diagnosis or treatment and to implement Brain Computer Interface (BCI) systems which may provide alternative pathways to transmit volitional information to enhance patient's quality of life.  Of particular interests are those which are based on the recognition of Event-Related Potentials (ERP) which are shown to be more robust to the unavoidable physical impairment which comes with this motor neuron disease.  This work mimics what electroencephalographers has been doing clinically, visually inspecting and categorizing phenomena within the EEG, and provides a framework to analyse and characterize EEG signals, with a focus on the P300, an ERP elicited by the oddball paradigm of rare events.  The validity of the method is shown by off-line processing a public dataset of ALS patients.}
+\abstract{The analysis of Electroencephalograpy (EEG) signals for Amyotrophic Lateral Sclerosis (ALS) patients is of ulterior importance to elucidate different patterns or markers that could be potentially used to aid in diagnosis or treatment. Additionally, it will improve the implementation of Brain Computer Interface (BCI) systems which may provide alternative pathways to transmit volitional information to enhance patient's quality of life.  Of particular interests are those which are based on the recognition of Event-Related Potentials (ERP) which are shown to be more robust to the unavoidable physical impairment which comes with this motor neuron disease.  This work mimics what electroencephalographers have been doing clinically, visually inspecting and categorizing phenomena within the EEG, and provides a framework to analyse and characterize EEG signals, with a focus on the P300, an ERP elicited by the oddball paradigm of rare events.  The validity of the method is shown by off-line processing a public dataset of ALS patients.}
 
 % Keywords
 \keyword{electroencephalography (EEG); BCI; P300; ALS; classification; HOG; SIFT}
@@ -137,11 +137,11 @@ $^{1}$ \quad Computer Engineering Department, Instituto Tecnológico de Buenos A
 %\end{enumerate}
 
 
-Although impressive advances in neuroimagining techniques (particularly radio-nuclear and radiological scanning methods) \citep{Schomer2010} has diminished the prospects of the traditional Electroencephalography (EEG), the advent and development of digitalized devices has pressed for a revamping of this hundredth years old technology.  Their versatility, ease of use, temporal resolution, ease of development and fabrication, and its proliferation as consumer devices, is pushing EEG to become the de-facto non invasive method to access and harness brain information.
+Although impressive advances in neuroimagining techniques (particularly radio-nuclear and radiological scanning methods) \citep{Schomer2010} have diminished the prospects of the traditional Electroencephalography (EEG), the advent and development of digitalized devices has pressed for a revamping of this hundredth years old technology.  Their versatility, ease of use, temporal resolution, ease of development and fabrication, and its proliferation as consumer devices, are pushing EEG to become the de-facto non invasive method to access and harness brain information.
 
 Key contribution to this development has been the field of Brain Computer Interfaces (BCI) \citep{WolpawJonathanR2012} which is the pursuit of the development of a new channel of communication particularly aimed to persons affected by neuro-degenerative diseases.
 
-One very noteworthy aspect of this communication channel is the ability to volitionally transmit information from the Central Nervous System (CNS), to a computer device and from there use that information to control a wheelchair \citep{Carlson2013}, as input to a speller application \citep{Guger2009a}, or as aiding tool in a rehabilitation procedure \citep{Jure2016}.  The holly grail of BCI is to implement a new complete and alternative pathway to restore lost locomotion \citep{WolpawJonathanR2012}.
+One very noteworthy aspect of this novel communication channel is the ability to volitionally transmit information from the Central Nervous System (CNS) to a computer device and from there use that information to control a wheelchair \citep{Carlson2013}, as input to a speller application \citep{Guger2009a}, or as aiding tool in a rehabilitation procedure \citep{Jure2016}.  The holly grail of BCI is to implement a new complete and alternative pathway to restore lost locomotion \citep{WolpawJonathanR2012}.
 
 EEG signals are remarkably complex and have been characterized as a multichannel non-stationary stochastic process and even considered random enough as to be used as a source of pseudo random number generator \citep{Chen2014}. Additionally, they have a high variability between different subjects and even between different moments for the same subject, requiring an adaptive and co-adaptive calibration and learning procedures \citep{Clerc}.  Hence, this imposes an outstanding challenge that is necessary to overcome in order to extract information from raw EEG signals.
 
@@ -164,15 +164,15 @@ In brief, this paper reports a straightforward method to, first characterize EEG
 
 Besides new novel applications of BCI, the goal of the entire discipline is to provide communication assistance to people affected by neuro-degenerative diseases.  It is understood that for people suffering from ALS, even though this pathology do not harm the CNS, their brain signals do suffer slow and deteriorating changes that may lead to different EEG patterns \citep{Nijboer2009,Riener2014}.
 
-BCI has gained mainstream public awareness and recently even held a peculiar Olympics \citep{Riener2014} and been broadcasted during the inauguration of the last World Cup.  New developments have overcome the out-of-the-lab high-bar and they are starting to be used in real world environments\citep{Huggins2016}.  However, they still lack the necessary robustness, and its performance is well behind any other method of human computer interaction, including any kind of detection of remaining muscular movement \citep{Clerc}.
+BCI has gained mainstream public awareness and recently even held a peculiar Olympics \citep{Riener2014} and been broadcasted during the inauguration of the last Soccer World Cup.  New developments have overcome the out-of-the-lab high-bar and they are starting to be used in real world environments\citep{Huggins2016}.  However, they still lack the necessary robustness, and its performance is well behind any other method of human computer interaction, including any kind of detection of remaining muscular movement \citep{Clerc}.
 
-To verify the validity of the proposed framework and method, the public dataset 008-2014 published on the BNCI-Horizon website \citep{Riccio2013} was used to perform a binary classification task on the provided signals.  The algorithm was implemented using the VLFeat \citep{Vedaldi2010} Computer Vision libraries on MATLAB 2014a (Mathworks Inc., Natick, MA, USA). 
+To verify the validity of the proposed framework and method, the public dataset 008-2014  \citep{Riccio2013} published on the BNCI-Horizon website \citep{Brunner2014} was used to perform a binary classification task on the provided signals.  The algorithm was implemented using the VLFeat \citep{Vedaldi2010} Computer Vision libraries on MATLAB 2014a (Mathworks Inc., Natick, MA, USA). 
 
 \subsection{Experimental protocol}
 
 The protocol is explained in \citep{Riccio2013} but can be summarized as follows:  8 subjects with confirmed diagnoses but on different stages of ALS disease, were recruited and accepted to perform the experiments. The P300 task objective was meant to spell 7 words of 5 letter each.  The first 3 runs were used for training and the remaining 4 for testing with visual feedback.  A trial, for this experiment, was defined as every attempt to select a letter from the speller, and it was composed of 10 repetitions of flashes of 6 rows and 6 columns of the traditional 6x6 P300 matrix , yielding 120 repetitions.  Flashing of row/columns was performed for 0.125 s, following by a resting period of the same size.  After 120 repetions and inter-trial pause was included before resuming with the following letter.
 
-The gathered dataset was sampled at 256 Hz and consisted of EEG matrix for electrode channels Fz,Cz,Pz,Oz,P3,P4,PO7 and PO8, identified according to the 10-20 International System,  for each one of the 8 subjects.  This dataset was published in the popular BNCI-Horizon 2020 website \citep{Brunner2014}.
+The gathered dataset was sampled at 256 Hz and consisted of EEG matrix for electrode channels Fz,Cz,Pz,Oz,P3,P4,PO7 and PO8, identified according to the 10-20 International System,  for each one of the 8 subjects.  
 
 
 %\subsection{Morphological Signal Analysis}
@@ -203,7 +203,7 @@ The gathered dataset was sampled at 256 Hz and consisted of EEG matrix for elect
 
 \subsubsection{Preprocessing}
 
-The mandatory first step is to help to enhance the SNR of the P300 pattern above the level of basal EEG. The processing pipeline starts with applying a notch filter to the raw signal, a decimation with a FIR filter of order 30 from the original 256 Hz to 32 Hz and finally applying a 4th degree 10 Hz lowpass Butterworth filter.  
+The mandatory first step is to enhance the SNR of the P300 pattern above the level of basal EEG. The processing pipeline starts with applying a notch filter to the raw signal, a decimation with a FIR filter of order 30 from the original 256 Hz to 32 Hz and finally applying a 4th degree 10 Hz lowpass Butterworth filter.  
 
 \subsubsection{Segmentation, Artefact Removal and Signal Averaging}
 
@@ -218,11 +218,15 @@ These segments, 20 for each class, are later point-to-point averaged for the who
 
 The central part of this method is the feature generation: the histogram of visual gradients.  To do so, the first step is the transformation of the signal into a temporary binary image.
 
+The signal is first scaled and centered at zero by 
+
 \begin{equation}
 \tilde{x}(t,c) = \left \lfloor{ \gamma \cdot ( x(t,c) - \bar{x}(t,c)  )}\right \rfloor
 \end{equation}
 
-where $\gamma$ is the image scale, $t$ is time and $ x(t,c) $ is the EEG matrix defined for each $t$ and for a particular channel $c$.
+\noindent where $\gamma$ is the image scale, $t$ is time and $ x(t,c) $ is the EEG matrix defined for each $t$ and for a particular channel $c$.
+
+Then the image is constructed by
 
 \begin{equation}
 I(z_1,z_2) = \left\{ \begin{array}{rl}
@@ -232,16 +236,20 @@ I(z_1,z_2) = \left\{ \begin{array}{rl}
 \label{eq:images}
 \end{equation}
 
-From the Equation \ref{eq:images} the image $ I(z_1,z_2) $ is constructed an used to derive local representations that will capture the visual shape of the signal.
+\noindent and used to derive local representations that will capture the visual shape of the signal.
 
-Finally, the histogram of gradients, which is based on a very successful technique from Computer Vision, the SIFT \citep{Lowe2004} descriptor, is calculated on local image patches centered on sample points \citep{Vedaldi2010}.
+Finally, the histogram of gradients, which is based on a technique from Computer Vision, the SIFT \citep{Lowe2004} descriptor, is calculated on local image patches centered on sample points \citep{Vedaldi2010}.
+To do this, the patch is divided in 16 blocks, arranged in a 4x4 grid and centered on $T = (x,y)$, a location within the image.  On each block, the bin consists of 45 degrees obtaining 8 aligning angles.
+
+The values of the image gradients aligned with each angle bin are accumulated through
 
 \begin{equation}
  h(p,i,j) = 3 \cdot s \int w_\mathrm{ang}(\angle J(\mathbf{x}) - \theta_p)\, w_{ij}\left(\frac{\mathbf{x} - T}{3 s}\right)\, |J(\mathbf{x})|\, d\mathbf{x}
 \label{eq:histogram}
 \end{equation}
 
-where $s$ is the size of the local patch, $\angle J(\mathbf{x})$ is the gradient found at each of the 16 blocks of the patch aligned with the angle $\theta_p$.  The patch is divided in 16 blocks, arranged in a 4x4 grid and centered on $T = (x,y)$, a location within the image.  On each block, the bin consists of 45 degrees obtaining 8 aligning angles. The Equation \ref{eq:histogram} accumulates the values of the image gradients aligned with each angle bin.  This gives a descriptor of 128 dimension as shown on Figure \ref{fig:sampledescriptor}.  
+\noindent where $s$ is the size of the local patch, $\angle J(\mathbf{x})$ is the gradient found at each of the 16 blocks of the patch aligned with the angle $\theta_p$.  
+This gives a descriptor of 128 dimension as shown on Figure \ref{fig:sampledescriptor}.  
 
 \begin{figure}[H]
 \centering
@@ -445,4 +453,3 @@ ITR: Information Transfer Rate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
-
