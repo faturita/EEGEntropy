@@ -59,7 +59,7 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{EEG characterization and classification based on histograms of visual gradients}
+\Title{EEG characterization and classification based on histograms of image gradients}
 
 % Authors, for the paper (add full first names)
 \Author{Rodrigo Ramele $^{1,\dagger}$, Ana Julia Villar $^{1}$ and Juan Miguel Santos  $^{1}$*}
@@ -137,7 +137,7 @@ $^{1}$ \quad Computer Engineering Department, Instituto Tecnológico de Buenos A
 %\end{enumerate}
 
 
-Although impressive advances in neuroimagining techniques (particularly radio-nuclear and radiological scanning methods) \citep{Schomer2010} have diminished the prospects of the traditional Electroencephalography (EEG), the advent and development of digitalized devices has pressed for a revamping of this hundredth years old technology.  Their versatility, ease of use, temporal resolution, ease of development and fabrication, and its proliferation as consumer devices, are pushing EEG to become the de-facto non invasive method to access and harness brain information.
+Although recent advances in neuroimagining techniques (particularly radio-nuclear and radiological scanning methods) \citep{Schomer2010} have diminished the prospects of the traditional Electroencephalography (EEG), the advent and development of digitalized devices has pressed for a revamping of this hundredth years old technology.  Their versatility, ease of use, temporal resolution, ease of development and fabrication, and its proliferation as consumer devices, are pushing EEG to become the de-facto non invasive method to access and harness brain information.
 
 Key contribution to this development has been the field of Brain Computer Interfaces (BCI) \citep{WolpawJonathanR2012} which is the pursuit of the development of a new channel of communication particularly aimed to persons affected by neuro-degenerative diseases.
 
@@ -147,9 +147,13 @@ EEG signals are remarkably complex and have been characterized as a multichannel
 
 EEG markers \citep{Clerc} that can be used to transmit volitionally information are limited, and each one of them has a particular set or combination of appropriate methods to decode them. Inevitably, it is often necessary to implement many distinct and specialized algorithmic methods, to filter the signal, enhance its SNR, and try to determine some meaning out of it.  
 
-In this work a new method to characterize EEG signals is presented, expanded and detailed.  Its validity is verified by processing off-line data for ALS patients.  This is the continuation of the work previously presented in \citep{Ramele2016}, where it was applied to rhythmic patterns, and that it can be extended to describe transient events like those produced by the P300\citep{Knuth2006}.
+Besides novel applications of BCI, the goal of the entire discipline is to provide communication assistance to people affected by neuro-degenerative diseases.  It is understood that for people suffering from ALS, even though this pathology do not harm the CNS, their brain signals do suffer slow and deteriorating changes that may lead to different EEG patterns alterations \citep{Nijboer2009,Riener2014}.
 
-The method is based on the morphological analysis of the shape of the EEG signal\citep{Alvarado-Gonzalez2016,Yamaguchi2009} and was inspired by mimicking what traditionally electroencephalographers have been performing for almost a century: visually inspecting  raw signals.
+BCI has gained mainstream public awareness and recently even held a peculiar Olympics \citep{Riener2014} and been broadcasted during the inauguration ceremony of the 2014 Soccer World Cup.  New developments have overcome the out-of-the-lab high-bar and they are starting to be used in real world environments \citep{Huggins2016}.  However, they still lack the necessary robustness, and its performance is well behind any other method of human computer interaction, including any kind of detection of remaining muscular movement \citep{Clerc}.
+
+In this work a new method to characterize EEG signals is presented, expanded and detailed.  Its validity is verified by processing off-line data for ALS patients.  This is the continuation of the work previously presented in \citep{Ramele2016}, where it was applied to rhythmic patterns, and that it can be extended to describe transient events like those produced by the P300 \citep{Knuth2006}.
+
+The method is based on the morphological analysis of the shape of the EEG signal \citep{Alvarado-Gonzalez2016,Yamaguchi2009} and was inspired by mimicking what traditionally electroencephalographers have been performing for almost a century: visually inspecting  raw signals \citep{Hartman2005}.
 
 %This paper reports on a study done to address
 %the hypothesis that communication task complexity
@@ -157,22 +161,18 @@ The method is based on the morphological analysis of the shape of the EEG signal
 %description) is correlated with BCI performance accuracy
 %and P300 characteristics.
 
-In brief, this paper reports a straightforward method to, first characterize EEG signals based on the identification of their morphological shapes, and how this characterization can be used to implement a BCI scheme to identify Event Related Potentials, particularly the well-known P300, on an off-line and public dataset.
+In brief, this paper reports a straightforward method to, first characterize EEG signals based on the identification of their morphological shapes, and how this characterization can be used to implement a BCI scheme to identify Event Related Potentials of ALS patients, particularly the well-known P300, on an off-line and public dataset.
 
 
 \section{Materials and Methods}
 
-Besides new novel applications of BCI, the goal of the entire discipline is to provide communication assistance to people affected by neuro-degenerative diseases.  It is understood that for people suffering from ALS, even though this pathology do not harm the CNS, their brain signals do suffer slow and deteriorating changes that may lead to different EEG patterns \citep{Nijboer2009,Riener2014}.
-
-BCI has gained mainstream public awareness and recently even held a peculiar Olympics \citep{Riener2014} and been broadcasted during the inauguration of the last Soccer World Cup.  New developments have overcome the out-of-the-lab high-bar and they are starting to be used in real world environments\citep{Huggins2016}.  However, they still lack the necessary robustness, and its performance is well behind any other method of human computer interaction, including any kind of detection of remaining muscular movement \citep{Clerc}.
-
-To verify the validity of the proposed framework and method, the public dataset 008-2014  \citep{Riccio2013} published on the BNCI-Horizon website \citep{Brunner2014} was used to perform a binary classification task on the provided signals.  The algorithm was implemented using the VLFeat \citep{Vedaldi2010} Computer Vision libraries on MATLAB 2014a (Mathworks Inc., Natick, MA, USA). 
+To verify the validity of the proposed framework and method, the public dataset 008-2014  \citep{Riccio2013} published on the BNCI-Horizon website \citep{Brunner2014} was used to perform a binary classification task on the provided signals.  The algorithm was implemented using the VLFeat  \citep{Vedaldi2010} Computer Vision libraries on MATLAB 2014a (Mathworks Inc., Natick, MA, USA). 
 
 \subsection{Experimental protocol}
 
-The protocol is explained in \citep{Riccio2013} but can be summarized as follows:  8 subjects with confirmed diagnoses but on different stages of ALS disease, were recruited and accepted to perform the experiments. The P300 task objective was meant to spell 7 words of 5 letter each.  The first 3 runs were used for training and the remaining 4 for testing with visual feedback.  A trial, for this experiment, was defined as every attempt to select a letter from the speller, and it was composed of 10 repetitions of flashes of 6 rows and 6 columns of the traditional 6x6 P300 matrix , yielding 120 repetitions.  Flashing of row/columns was performed for 0.125 s, following by a resting period of the same size.  After 120 repetions and inter-trial pause was included before resuming with the following letter.
+The protocol is explained in \citep{Riccio2013} but can be summarized as follows:  8 subjects with confirmed diagnoses but on different stages of ALS disease, were recruited and accepted to perform the experiments. The P300 task objective was meant to spell 7 words of 5 letter each.  The first 3 runs were used for training and the remaining 4 for testing with visual feedback.  A trial, for this experiment, was defined as every attempt to select a letter from the speller, and it was composed of 10 repetitions of flashes of 6 rows and 6 columns of the traditional 6x6 P300 matrix , yielding 120 repetitions.  Flashing of row/columns was performed for 0.125 s, following by a resting period of the same length.  After 120 repetitions an inter-trial pause was included before resuming with the following letter.
 
-The gathered dataset was sampled at 256 Hz and consisted of EEG matrix for electrode channels Fz,Cz,Pz,Oz,P3,P4,PO7 and PO8, identified according to the 10-20 International System,  for each one of the 8 subjects.  
+The gathered dataset was sampled at 256 Hz and consisted of an EEG matrix for electrode channels Fz,Cz,Pz,Oz,P3,P4,PO7 and PO8, identified according to the 10-20 International System,  for each one of the 8 subjects.  
 
 
 %\subsection{Morphological Signal Analysis}
@@ -200,23 +200,24 @@ The gathered dataset was sampled at 256 Hz and consisted of EEG matrix for elect
 
 \subsection{Algorithm}
 
+The proposed algorithm was developed to perform a binary classification task, determining the appearance on each corresponding signal segment, of the P300 response.  If it was present, the segment was labelled as class 1, a \textit{hit}, and its absent was identified as class 2, a \textit{no-hit}.
 
 \subsubsection{Preprocessing}
 
-The mandatory first step is to enhance the SNR of the P300 pattern above the level of basal EEG. The processing pipeline starts with applying a notch filter to the raw signal, a decimation with a FIR filter of order 30 from the original 256 Hz to 32 Hz and finally applying a 4th degree 10 Hz lowpass Butterworth filter.  
+The mandatory first step is to enhance the SNR of the P300 pattern above the level of basal EEG. The processing pipeline starts by applying a notch filter to the raw signal, a decimation with an FIR filter of order 30 from the original 256 Hz to 32 Hz and finally applying a 4th degree 10 Hz lowpass Butterworth filter.  
 
 \subsubsection{Segmentation, Artefact Removal and Signal Averaging}
 
 The EEG matrix is processed on a channel by channel basis.  For each word, each letter, a segment of EEG signal is extracted that encompass 10 repetitions of 12 flashings, 6 rows and 6 columns.  For every 12 stimuli flashing, i.e. one complete sequence of repetitions of each row/column, a basic artefact removal procedure of removing the entire segment if any signal goes above 70 $\mu$V is applied.
 
-From every segment of 12 flashings, two epoch corresponding to a hit and two matching a no-hit are constructed as segments of 1s length (256 sample points).
+From every segment of 12 flashings, two epoch were obtained when the signal was labelled as \textit{hit} and two when the signal was labelled as a \textit{no-hit} of 1s length both (256 sample points).
 
-These segments, 20 for each class, are later point-to-point averaged for the whole 120 repetitions group.  This finally lead to 2 averaged signals for each of the 5 letters, for the 7 words, comprising a set of 70 averaged signals\citep{Liang2008}.
+These segments, 20 for each class, are later point-to-point averaged for the whole trial.  This finally lead to 2 averaged signals for each of the 5 letters, for the 7 words, comprising a set of 70 averaged signals \citep{Liang2008}.
 
 
 \subsubsection{Features}
 
-The central part of this method is the feature generation: the histogram of visual gradients.  To do so, the first step is the transformation of the signal into a temporary binary image.
+The central part of this method is the feature generation: the histogram of image gradients.  To do so, the first step is the transformation of the signal into a temporary binary image.
 
 The signal is first scaled and centered at zero by 
 
@@ -238,62 +239,92 @@ I(z_1,z_2) = \left\{ \begin{array}{rl}
 
 \noindent and used to derive local representations that will capture the visual shape of the signal.
 
-Finally, the histogram of gradients, which is based on a technique from Computer Vision, the SIFT \citep{Lowe2004} descriptor, is calculated on local image patches centered on sample points \citep{Vedaldi2010}.
-To do this, the patch is divided in 16 blocks, arranged in a 4x4 grid and centered on $T = (x,y)$, a location within the image.  On each block, the bin consists of 45 degrees obtaining 8 aligning angles.
-
-The values of the image gradients aligned with each angle bin are accumulated through
+Finally, the histogram of gradients, which is based on the SIFT \citep{Lowe2004} descriptor, a technique from Computer Vision, is calculated on local image patches centered on sample points \citep{Vedaldi2010}.
+To do this, the patch is divided in 16 blocks, arranged in a 4x4 grid and centered on $T = (x,y)$, a location within the image. The values of the image gradients for each angle bin are accumulated through
 
 \begin{equation}
  h(p,i,j) = 3 \cdot s \int w_\mathrm{ang}(\angle J(\mathbf{x}) - \theta_p)\, w_{ij}\left(\frac{\mathbf{x} - T}{3 s}\right)\, |J(\mathbf{x})|\, d\mathbf{x}
 \label{eq:histogram}
 \end{equation}
 
-\noindent where $s$ is the size of the local patch, $\angle J(\mathbf{x})$ is the gradient found at each of the 16 blocks of the patch aligned with the angle $\theta_p$.  
-This gives a descriptor of 128 dimension as shown on Figure \ref{fig:sampledescriptor}.  
-
+\noindent where $s$ is the size of the local patch, which can be converted into pixels by doing $ Px = 4 \cdot 3 \cdot s $ , $\angle J(\mathbf{x})$ is the angle of the gradient vector $ J(\mathbf{x}) $  found at each one of the 16 blocks of the patch, whereas  $\theta_p$ is one of the bin angles.  On the other hand $ x = (x_i, x_j) $ corresponds to each one of the pixels of the local patch, and $ w_\mathrm{ang}  $  and $ w_{ij} $ are linear interpolation functions \citep{Lowe2004}.
+  
+Summarizing, each block of the patch defines 8 different bins of the histogram.  On each one of these bins  the magnitude of the image gradients at different angles is summed up (from 0 to 360, on steps of 45 degrees).  As the patch is 4x4, it gives a descriptor of 128 dimension as shown on Figure \ref{fig:sampledescriptor}.
+ 
 \begin{figure}[H]
 \centering
-\includegraphics[width=16cm]{sampledescriptor.eps}
-\caption{The local patch is located around a sample point plotted on the temporary signal. All the sample points are interpolated using the Bresenham algorithm. The 4x4 grid can be seen on the descriptor and also arrows showing the dominant gradient on each block.}
+\includegraphics[width=6cm]{sampledescriptor.png}
+\caption{The local patch is located around a sample point plotted on the temporary image. All the sample points are interpolated using the Bresenham algorithm. The 4x4 block grid can be seen on the patch and also arrows showing the dominant gradient on each block.}
 \label{fig:sampledescriptor}
 \end{figure}
 
 
 \subsubsection{Classification}
 
-The classification is carried out by using the discriminative semi-supervised classification method, the Naive Bayes Nearest Neighbout (NBNN) \citep{Boiman2008}. % algorithm which can be described as follows.
+The classification is carried out by using a discriminative semi-supervised classification method, the Naive Bayes Nearest Neighbout (NBNN) \citep{Boiman2008} and the first step consist in extracting from the training set labelled descriptor for each class which are thus grouped together in two KD-tree \citep{Vedaldi2010} database structures.
+
+%BCI Simulation vs k-fold cross validation.  It is quite known and understood that because the same experience will not generate the same markers in the EEG, BCI Simulation is sometimes better suited to understand how the device will operate on a real online application (the graeat variability of BCI).
+
+While doing classification based on local features, which encode partial information, one problem that frequently arises is how to ensemble the individual classification of each local characteristic to the image that were used to derive those descriptors.
+
+The NBNN algorithm tackles this problem by comparing each image against a whole classification class which is characterized by the set of descriptors that are closest to each one of the descriptors obtained for the query image.  The algorithm is based on \ref{eq:classification},
 
 \begin{equation}
 \hat{C} = argmin_C \sum_{}^{} \left\lVert d_i - NN_C(d_i) \right\rVert ^2
+\label{eq:classification}
 \end{equation}
 
-%BCI Simulation vs k-fold cross validation.  It is quite known and understood that because the same experience will not generate the same markers in the EEG, BCI Simulation is sometimes better suited to understand how the device will operate on a real online application (the graeat variability of BCI).
+\noindent where the predicted class $\hat{C}$ of a query image is calculated as the class $ C $ that minimize the summation of the $ L^2 $ distance between each descriptor $ d_i $ that belongs to the query image and its corresponding near neighbour $ NN_C(d_i) $ descriptor from each class.
+
+
+\subsubsection{Parameters}
+
+This method's parameters were selected according to the experimental protocol.  As the P300 event latency varies greatly between subjects, it is necessary to provide a descriptor that will be able to capture an entire transient event.  Equations \ref{eq:mapping1} and \ref{eq:mapping2} can be used to map the original signal parameters to local image patch structure. 
+
+\begin{equation}
+s = \frac{\Delta \mu V}{4 \cdot 3} \cdot \gamma 
+\label{eq:mapping1}
+\end{equation}
+
+\begin{equation}
+s = \frac{\lambda \cdot Fs}{4 \cdot 3} \cdot \gamma
+\label{eq:mapping2}
+\end{equation}
+
+\noindent where $ Fs $ is the sample frequency of the EEG signal, $ \lambda $ is the length in seconds covered by the patch, and $ \mu V $ correspond to the amplitude in microvolts that can be covered by the height of the patch.   By using a $ s = 3 $ and a double scale of the image $ \gamma = 2 $ this gives the local patch, and the descriptor, the ability to identify events of 18 $ \mu V $ of amplitude of $ \lambda = 0.5 s $.  Finally, descriptors locations $ T $ were selected as suggested by the dataset publisher \citep{Riccio2013} between 0.2s and 0.7s after the onset of the stimuli. 
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=16cm]{localpatch.png}
+%\caption{The local patch is mapped to the original image by their correspondence .}
+%\label{fig:sampledescriptor}
+%\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
 
-In Figure \ref{fig:subjectaveraged} the grand average (point-to-point) for all the subjects is shown.  The P300 characteristic curve can be seen particularly in subjects 2, and 6 and in a lesser extend in the remaining subjects. In order to obtain a valid binary classification on averaged signals, particular care was observed to avoid unbalanced samples, because that may introduce a bias in the classification procedure (signal variance is proportional to the square root of the number of samples and the procedure would be discriminating signals with different variances).Particularly in the case of the P300 response, the oddball paradigm requires that one of the stimulus need to be infrequent so that will unavoidably force that the data will be unbalanced (that is, an unequal number of trials in each condition).
+In Figure \ref{fig:subjectaveraged} the grand average (point-to-point) for all the subjects using the whole trial (i.e. 120 repetitions) is shown.  The P300 characteristic curve can be seen particularly in subjects 2, and 6 and in a lesser extend in the remaining subjects. In order to obtain a valid binary classification on averaged signals, particular care was observed to avoid unbalanced samples, because that may introduce a bias in the classification procedure (the variance of average signals is inversely proportional to the number of samples and the procedure would be discriminating signals with different variances).Particularly in the case of the P300 response, the oddball paradigm requires that one of the stimulus need to be infrequent so that will unavoidably force that the data will be unbalanced (that is, an unequal number of trials in each condition).
 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=16cm]{subjectaveraged.eps}
-\caption{Point-To-Point grand averages of epochs obtained for hits (solid line) and no hits (dashed line) for each one of the 8 subjects for channel Cz. The P300 characteristic curve can be well identified on subjects 2 and 6.}
+\caption{Point-To-Point grand averages of epochs obtained for hits (solid line) and no hits (dashed line) for each one of the 8 subjects for channel Cz. The P300 characteristic curve can be well identified particularly on subjects 2 and 6.}
 \label{fig:subjectaveraged}
 \end{figure}
 
 Results are shown in Table \ref{tab:results} where BCI accuracy
-for the Cz channel is calculated and compared with the values obtained by the published of the dataset.  Additionally the best performing channel is informed and its accuracy value.  It is of particular interest that using this method, the best performing channel was not always Cz, and instead occipital channels PO8 and PO7 showed very good performance indeed \citep{Huggins2016,Jure2016}.
+for the Cz channel is calculated and compared with the values obtained by the published of the dataset  \citep{Riccio2013}.  Additionally the best performing channel is informed and its accuracy value.  It is of particular interest that using this method, the best performing channel was not always Cz, and instead occipital channels PO8 and PO7 showed very good performance indeed \citep{Huggins2016,Jure2016}.
 
 % (CITE TAYLOR AND  FRANCOS PAPER).
 
 \begin{table}[H]
-\caption{Results obtained for Accuracy levels by 3-fold cross validation. The values reported by the dataset publishers for Cz are reproduced here for comparison. Additionally, channel Cz BCI accuracies can be seen as well as the performance levels obtained for the BPC, the best performing channel for each subject.}
+\caption{Results obtained for Accuracy levels by 3-fold cross validation. The values reported by the dataset publishers for Cz are reproduced here for comparison. Additionally, channel Cz BCI accuracies can be seen as well as the performance levels and their standard deviation obtained for the BPC, the best performing channel for each subject.}
 \centering
 %% \tablesize{} %% You can specify the fontsize here, e.g.  \tablesize{\footnotesize}. If commented out \small will be used.
 \begin{tabular}{ccccc}
 \toprule
-\textbf{Participants}	& \textbf{Original Cz}	& \textbf{ACC at Cz}	& \textbf{BPC}	& \textbf{Performance}\\
+\textbf{Participant}	& \textbf{Original Cz}	& \textbf{ACC at Cz}	& \textbf{BPC}	& \textbf{Performance}\\
 \midrule
 1     &   0.84 &   0.79 & Cz  &   0.79 $\pm$ 0.01 \\
 2     &   0.86 &   0.81 & PO7 &   0.93 $\pm$ 0.01 \\
@@ -311,12 +342,12 @@ for the Cz channel is calculated and compared with the values obtained by the pu
 The ITR, or BTR, in the case of reactive BCIs \citep{WolpawJonathanR2012} strongly depends on the amount of signal averaging required to transmit a valid and robust selection.  There is a trade-off that needs to be balanced between the required number of repetitions for each trial to guarantee robust transmission and the the achieved speed of transmission affected by the repetions.  As detailed in the table \ref{tab:singletrialreduction} this method is only reduced in a 20 percent in accuracy levels even by using only one sequence of repetitions.
 
 \begin{table}[H]
-\caption{Results obtained for Accuracy levels by performing a BCI simulation for the testing dataset. The BPC, best performing channel is shown and also performance levels for the 120, 60 and 12 repetitions. Finally the PR, performance reduction is described.  Almost all the subjects performed around 70\% even with by averaging 2 signals for each class.}
+\caption{Results obtained for Accuracy levels by performing a BCI simulation for the testing dataset. The BPC, best performing channel is shown and also performance levels for the 120, 60 and 12 repetitions. Finally the PR, performance reduction as a rate of reduction compared to the accuracy obtained using the entire trial, is described.  Almost all the subjects performed around 70\% even by averaging only 2 epochs for each class.}
 \centering
 %% \tablesize{} %% You can specify the fontsize here, e.g.  \tablesize{\footnotesize}. If commented out \small will be used.
 \begin{tabular}{cccccc}
 \toprule
-\textbf{Participants}	& \textbf{BPC}	& \textbf{ACC@120}	& \textbf{ACC@60}	&  \textbf{ACC@12} & \textbf{PR}\\
+\textbf{Participant}	& \textbf{BPC}	& \textbf{ACC@120}	& \textbf{ACC@60}	&  \textbf{ACC@12} & \textbf{PR}\\
 \midrule
 1 & Cz &   0.80 &   0.82 &   0.72 & 9\% \\
 2 & PO7 &   0.93 &   0.78 &   0.75 & 18\%\\
@@ -412,7 +443,8 @@ CNS: Central Nervous System\\
 ALS: Amyotrophic Lateral Sclerosis\\
 ERP: Event-Related Potential\\
 P300: Positive deflection of an Event-Related Potential which occurs 300 ms after onset of stimuli\\
-ITR: Information Transfer Rate}
+ITR: Information Transfer Rate\\
+BTR: Bit Transfer Rate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% optional
