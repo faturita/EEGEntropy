@@ -141,11 +141,11 @@ Although recent advances in neuroimagining techniques (particularly radio-nuclea
 
 Key contribution to this development has been the field of Brain Computer Interfaces (BCI) \citep{WolpawJonathanR2012} which is the pursuit of the development of a new channel of communication particularly aimed to persons affected by neuro-degenerative diseases.
 
-One very noteworthy aspect of this novel communication channel is the ability to volitionally transmit information from the Central Nervous System (CNS) to a computer device and from there use that information to control a wheelchair \citep{Carlson2013}, as input to a speller application \citep{Guger2009a}, or as aiding tool in a rehabilitation procedure \citep{Jure2016}.  The holly grail of BCI is to implement a new complete and alternative pathway to restore lost locomotion \citep{WolpawJonathanR2012}.
+One noteworthy aspect of this novel communication channel is the ability to volitionally transmit information from the Central Nervous System (CNS) to a computer device and from there use that information to control a wheelchair \citep{Carlson2013}, as input to a speller application \citep{Guger2009a}, or as aiding tool in a rehabilitation procedure \citep{Jure2016}.  The holly grail of BCI is to implement a new complete and alternative pathway to restore lost locomotion \citep{WolpawJonathanR2012}.
 
-EEG signals are remarkably complex and have been characterized as a multichannel non-stationary stochastic process and even considered random enough as to be used as a source of pseudo random number generator \citep{Chen2014}. Additionally, they have a high variability between different subjects and even between different moments for the same subject, requiring an adaptive and co-adaptive calibration and learning procedures \citep{Clerc}.  Hence, this imposes an outstanding challenge that is necessary to overcome in order to extract information from raw EEG signals.
+EEG signals are remarkably complex and have been characterized as a multichannel non-stationary stochastic process and even considered random enough as to be used as a source of pseudo random number generator \citep{Chen2014}. Additionally, they have high variability between different subjects and even between different moments for the same subject, requiring an adaptive and co-adaptive calibration and learning procedures \citep{Clerc}.  Hence, this imposes an outstanding challenge that is necessary to overcome in order to extract information from raw EEG signals.
 
-EEG markers \citep{Clerc} that can be used to transmit volitionally information are limited, and each one of them has a particular set or combination of appropriate methods to decode them. Inevitably, it is often necessary to implement many distinct and specialized algorithmic methods, to filter the signal, enhance its SNR, and try to determine some meaning out of it.  
+EEG markers \citep{Clerc} that can be used to volitionally transmit information are limited, and each one of them has a particular set or combination of appropriate methods to decode them. Inevitably, it is often necessary to implement many distinct and specialized algorithmic methods, to filter the signal, enhance its SNR, and try to determine some meaning out of it.  
 
 Besides novel applications of BCI, the goal of the entire discipline is to provide communication assistance to people affected by neuro-degenerative diseases.  It is understood that for people suffering from ALS, even though this pathology do not harm the CNS, their brain signals do suffer slow and deteriorating changes that may lead to different EEG patterns alterations \citep{Nijboer2009,Riener2014}.
 
@@ -154,12 +154,6 @@ BCI has gained mainstream public awareness and recently even held a peculiar Oly
 In this work a new method to characterize EEG signals is presented, expanded and detailed.  Its validity is verified by processing off-line data for ALS patients.  This is the continuation of the work previously presented in \citep{Ramele2016}, where it was applied to rhythmic patterns, and that it can be extended to describe transient events like those produced by the P300 \citep{Knuth2006}.
 
 The method is based on the morphological analysis of the shape of the EEG signal \citep{Alvarado-Gonzalez2016,Yamaguchi2009} and was inspired by mimicking what traditionally electroencephalographers have been performing for almost a century: visually inspecting  raw signals \citep{Hartman2005}.
-
-%This paper reports on a study done to address
-%the hypothesis that communication task complexity
-%(copy-spelling vs. novel text generation of a picture
-%description) is correlated with BCI performance accuracy
-%and P300 characteristics.
 
 In brief, this paper reports a straightforward method to, first characterize EEG signals based on the identification of their morphological shapes, and how this characterization can be used to implement a BCI scheme to identify Event Related Potentials of ALS patients, particularly the well-known P300, on an off-line and public dataset.
 
@@ -170,7 +164,7 @@ To verify the validity of the proposed framework and method, the public dataset 
 
 \subsection{Experimental protocol}
 
-The protocol is explained in \citep{Riccio2013} but can be summarized as follows:  8 subjects with confirmed diagnoses but on different stages of ALS disease, were recruited and accepted to perform the experiments. The P300 task objective was meant to spell 7 words of 5 letter each.  The first 3 runs were used for training and the remaining 4 for testing with visual feedback.  A trial, for this experiment, was defined as every attempt to select a letter from the speller, and it was composed of 10 repetitions of flashes of 6 rows and 6 columns of the traditional 6x6 P300 matrix , yielding 120 repetitions.  Flashing of row/columns was performed for 0.125 s, following by a resting period of the same length.  After 120 repetitions an inter-trial pause was included before resuming with the following letter.
+The protocol is explained in \citep{Riccio2013} but can be summarized as follows:  8 subjects with confirmed diagnoses but on different stages of ALS disease, were recruited and accepted to perform the experiments. The P300 \citep{Knuth2006} is a positive deflection of the EEG signal which occurs 300 ms after the onset of a rare and deviant stimulus that the subject is expected to attend.  It is produced under the oddball paradigm \cite{WolpawJonathanR2012} and tough it is quite consistent across different subjects, it is small ( $ \pm 5 \mu V $ ) compared to the ongoing EEG activity.  The P300 detection task designed for this experiment was meant to spell 7 words of 5 letter each, using the traditional P300 Speller Matrix, where the flashings of rows and columns provide the deviant stimulus required to elicit this physiological response.  The first 3 runs were used for training and the remaining 4 for testing with visual feedback.  A trial, for this experiment, was defined as every attempt to select a letter from the speller, and it was composed of signal segments corresponding to 10 repetitions of flashes of 6 rows and 6 columns of the traditional 6x6 P300 matrix , yielding 120 repetitions.  Flashing of row/columns was performed for 0.125 s, following by a resting period of the same length.  After 120 repetitions an inter-trial pause was included before resuming with the following letter.
 
 The gathered dataset was sampled at 256 Hz and consisted of an EEG matrix for electrode channels Fz,Cz,Pz,Oz,P3,P4,PO7 and PO8, identified according to the 10-20 International System,  for each one of the 8 subjects.  
 
@@ -200,7 +194,7 @@ The gathered dataset was sampled at 256 Hz and consisted of an EEG matrix for el
 
 \subsection{Algorithm}
 
-The proposed algorithm was developed to perform a binary classification task, determining the appearance on each corresponding signal segment, of the P300 response.  If it was present, the segment was labelled as class 1, a \textit{hit}, and its absent was identified as class 2, a \textit{no-hit}.
+The proposed algorithm was developed to perform a binary classification task, determining the appearance on each corresponding signal segment of the P300 response.  If it was present, the segment was labelled as class 1, a \textit{hit}, and its absent was identified as class 2, a \textit{no-hit}.
 
 \subsubsection{Preprocessing}
 
@@ -208,11 +202,11 @@ The mandatory first step is to enhance the SNR of the P300 pattern above the lev
 
 \subsubsection{Segmentation, Artefact Removal and Signal Averaging}
 
-The EEG matrix is processed on a channel by channel basis.  For each word, each letter, a segment of EEG signal is extracted that encompass 10 repetitions of 12 flashings, 6 rows and 6 columns.  For every 12 stimuli flashing, i.e. one complete sequence of repetitions of each row/column, a basic artefact removal procedure of removing the entire segment if any signal goes above 70 $\mu$V is applied.
+The EEG matrix is processed on a channel by channel basis.  For each word, each letter, a segment of EEG signal is extracted that encompass 10 repetitions of 12 flashings, 6 rows and 6 columns.  For every 12 flashing stimuli, i.e. one complete sequence of repetitions of each row/column, a basic artefact removal procedure of removing the entire segment if any signal goes above 70 $\mu$V is applied.
 
-From every segment of 12 flashings, two epoch were obtained when the signal was labelled as \textit{hit} and two when the signal was labelled as a \textit{no-hit} of 1s length both (256 sample points).
+From every segment of 12 flashings, two epoch were obtained when the signal was labelled as \textit{hit} and two when the signal was labelled as a \textit{no-hit} of 1s length both (256 sample points).  
 
-These segments, 20 for each class, are later point-to-point averaged for the whole trial.  This finally lead to 2 averaged signals for each of the 5 letters, for the 7 words, comprising a set of 70 averaged signals \citep{Liang2008}.
+These segments, 20 for each class, are later point-to-point averaged for the whole trial. It is important to remark that only 2 out of 10 available segments marked as a \textit{no-hit} were extracted in order to avoid generating unbalanced averaging signals (see Results section \ref{section:results}). This finally led to 2 averaged signals for each of the 5 letters, for the 7 words, comprising a set of 70 averaged signals \citep{Liang2008}.
 
 
 \subsubsection{Features}
@@ -254,14 +248,14 @@ Summarizing, each block of the patch defines 8 different bins of the histogram. 
 \begin{figure}[H]
 \centering
 \includegraphics[width=6cm]{sampledescriptor.png}
-\caption{The local patch is located around a sample point plotted on the temporary image. All the sample points are interpolated using the Bresenham algorithm. The 4x4 block grid can be seen on the patch and also arrows showing the dominant gradient on each block.}
+\caption{The local patch is located around a sample point plotted on the temporary image. All the sample points are interpolated using the Bresenham algorithm. The 4x4 block grid can be seen on the patch as well as the green arrows showing the dominant gradient on each block.}
 \label{fig:sampledescriptor}
 \end{figure}
 
 
 \subsubsection{Classification}
 
-The classification is carried out by using a discriminative semi-supervised classification method, the Naive Bayes Nearest Neighbout (NBNN) \citep{Boiman2008} and the first step consist in extracting from the training set labelled descriptor for each class which are thus grouped together in two KD-tree \citep{Vedaldi2010} database structures.
+The classification is carried out by using a discriminative semi-supervised classification method, the Naive Bayes Nearest Neighbout (NBNN) \citep{Boiman2008} and the first step consists in extracting labelled descriptors from the training set for each class which are thus grouped together in two KD-tree \citep{Vedaldi2010} database structures.
 
 %BCI Simulation vs k-fold cross validation.  It is quite known and understood that because the same experience will not generate the same markers in the EEG, BCI Simulation is sometimes better suited to understand how the device will operate on a real online application (the graeat variability of BCI).
 
@@ -291,7 +285,7 @@ s = \frac{\lambda \cdot Fs}{4 \cdot 3} \cdot \gamma
 \label{eq:mapping2}
 \end{equation}
 
-\noindent where $ Fs $ is the sample frequency of the EEG signal, $ \lambda $ is the length in seconds covered by the patch, and $ \mu V $ correspond to the amplitude in microvolts that can be covered by the height of the patch.   By using a $ s = 3 $ and a double scale of the image $ \gamma = 2 $ this gives the local patch, and the descriptor, the ability to identify events of 18 $ \mu V $ of amplitude of $ \lambda = 0.5 s $.  Finally, descriptors locations $ T $ were selected as suggested by the dataset publisher \citep{Riccio2013} between 0.2s and 0.7s after the onset of the stimuli. 
+\noindent where $ Fs $ is the sample frequency of the EEG signal, $ \lambda $ is the length in seconds covered by the patch, and $ \mu V $ corresponds to the amplitude in microvolts that can be covered by the height of the patch.   By using $ s = 3 $ and a double scale of the image $ \gamma = 2 $ this gives the local patch, and the descriptor, the ability to identify events of 18 $ \mu V $ of amplitude of $ \lambda = 0.5 s $.  Finally, descriptors locations $ T $ were selected as suggested by the dataset publisher \citep{Riccio2013} between 0.2s and 0.7s after the onset of the stimulus. 
 
 %\begin{figure}[H]
 %\centering
@@ -302,8 +296,8 @@ s = \frac{\lambda \cdot Fs}{4 \cdot 3} \cdot \gamma
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
-
-In Figure \ref{fig:subjectaveraged} the grand average (point-to-point) for all the subjects using the whole trial (i.e. 120 repetitions) is shown.  The P300 characteristic curve can be seen particularly in subjects 2, and 6 and in a lesser extend in the remaining subjects. In order to obtain a valid binary classification on averaged signals, particular care was observed to avoid unbalanced samples, because that may introduce a bias in the classification procedure (the variance of average signals is inversely proportional to the number of samples and the procedure would be discriminating signals with different variances).Particularly in the case of the P300 response, the oddball paradigm requires that one of the stimulus need to be infrequent so that will unavoidably force that the data will be unbalanced (that is, an unequal number of trials in each condition).
+\label{section:results}
+In Figure \ref{fig:subjectaveraged} the grand average (point-to-point) for all the subjects using the whole trial (i.e. 120 repetitions) is shown.  The P300 characteristic curve can be seen particularly in subjects 2, and 6 and in a lesser extend in the remaining subjects. In order to obtain a valid binary classification on averaged signals, particular care was observed to avoid unbalanced samples, because that may introduce a bias in the classification procedure (the variance of average signals is inversely proportional to the number of samples and the procedure would be discriminating signals with different variances). Especially in the case of the P300 response, the oddball paradigm requires that one of the stimuli need to be infrequent so that will unavoidably force the data to be unbalanced (i.e. an unequal number of trials in each condition) \citep{Tibon2015}.
 
 
 \begin{figure}[H]
@@ -314,12 +308,11 @@ In Figure \ref{fig:subjectaveraged} the grand average (point-to-point) for all t
 \end{figure}
 
 Results are shown in Table \ref{tab:results} where BCI accuracy
-for the Cz channel is calculated and compared with the values obtained by the published of the dataset  \citep{Riccio2013}.  Additionally the best performing channel is informed and its accuracy value.  It is of particular interest that using this method, the best performing channel was not always Cz, and instead occipital channels PO8 and PO7 showed very good performance indeed \citep{Huggins2016,Jure2016}.
+for the Cz channel is calculated and compared with the values obtained by the publisher of the dataset  \citep{Riccio2013}.  Additionally the best performing channel is informed as well as its accuracy value.  It is of particular interest that using this method, the best performing channel was not always Cz, and instead occipital channels PO8 and PO7 showed very good performance indeed \citep{Huggins2016,Jure2016}.
 
-% (CITE TAYLOR AND  FRANCOS PAPER).
 
 \begin{table}[H]
-\caption{Results obtained for Accuracy levels by 3-fold cross validation. The values reported by the dataset publishers for Cz are reproduced here for comparison. Additionally, channel Cz BCI accuracies can be seen as well as the performance levels and their standard deviation obtained for the BPC, the best performing channel for each subject.}
+\caption{Accuracy levels obtained by a 3-fold cross validation. The values reported by the dataset publishers for Cz are reproduced here for comparison. Additionally, BCI accuracies for channel Cz can be seen as well as performance levels and their standard deviation obtained for the BPC, the best performing channel for each subject.}
 \centering
 %% \tablesize{} %% You can specify the fontsize here, e.g.  \tablesize{\footnotesize}. If commented out \small will be used.
 \begin{tabular}{ccccc}
@@ -339,10 +332,10 @@ for the Cz channel is calculated and compared with the values obtained by the pu
 \label{tab:results}
 \end{table}
 
-The ITR, or BTR, in the case of reactive BCIs \citep{WolpawJonathanR2012} strongly depends on the amount of signal averaging required to transmit a valid and robust selection.  There is a trade-off that needs to be balanced between the required number of repetitions for each trial to guarantee robust transmission and the the achieved speed of transmission affected by the repetions.  As detailed in the table \ref{tab:singletrialreduction} this method is only reduced in a 20 percent in accuracy levels even by using only one sequence of repetitions.
+The ITR, or BTR, in the case of reactive BCIs \citep{WolpawJonathanR2012} strongly depends on the amount of signal averaging required to transmit a valid and robust selection.  There is a trade-off that needs to be balanced between the required number of repetitions for each trial to guarantee robust transmission and the the achieved speed of transmission affected by the repetitions.  As detailed in the table \ref{tab:singletrialreduction} by applying this method, accuracy levels are only reduced in 20 percent even by using only one sequence of 12 repetitions (i.e. an entire flashing of the whole matrix).
 
 \begin{table}[H]
-\caption{Results obtained for Accuracy levels by performing a BCI simulation for the testing dataset. The BPC, best performing channel is shown and also performance levels for the 120, 60 and 12 repetitions. Finally the PR, performance reduction as a rate of reduction compared to the accuracy obtained using the entire trial, is described.  Almost all the subjects performed around 70\% even by averaging only 2 epochs for each class.}
+\caption{Accuracy levels obtained by performing a BCI simulation on the testing dataset (4 letters). The BPC, best performing channel is shown and also performance levels for the 120, 60 and 12 repetitions. Finally the PR, performance reduction as a rate of reduction compared to the accuracy obtained using the entire trial, is described.  Almost all the subjects performed around 70\% even by averaging only 2 epochs for each class.}
 \centering
 %% \tablesize{} %% You can specify the fontsize here, e.g.  \tablesize{\footnotesize}. If commented out \small will be used.
 \begin{tabular}{cccccc}
@@ -387,7 +380,7 @@ Although single trial classification was not perfectly achieved, it has been sho
 
 %Databases of descriptors.  Flexibility of the descriptor in terms of configuration and size (reference variants of SIFT on lower dimensiones).
 
-The adaptive behaviour of the algorithm make is well suited when the shape of the pattern elicited by the P300 response, does not conform to the predicted structure.  This is because, the descriptors are directly based on how the signals actually looked like for the training and calibration step, and they do not require any prior knowledge about the signal.  This is of particular relevance for studies on outliers populations as may be the case for people who suffered some neuro-degenerative disease like Lou Gehrig's disease.
+The adaptive behaviour of the algorithm make it well suited when the shape of the pattern elicited by the P300 response, does not conform to the predicted structure.  This is due to the fact that the descriptors are directly based on how the signals actually looked like for the training and calibration step, and they do not require any prior knowledge about the signal.  This is of particular relevance for studies on outliers populations as may be the case for people who suffered some form of neuro-degenerative disorder like Lou Gehrig's disease.
 
 The expanding of the understanding of this tool in order to automatically classify patterns in EEG, that are specifically identified by their shapes, is a prospect future work to be considered.  It may also provide  assistance to physician or electroencephalographers to help them locate these EEG patterns particularly in long recording periods \citep{Hartman2005}, frequent in sleep research.
 
@@ -442,9 +435,11 @@ SNR: Signal to Noise Ratio\\
 CNS: Central Nervous System\\
 ALS: Amyotrophic Lateral Sclerosis\\
 ERP: Event-Related Potential\\
-P300: Positive deflection of an Event-Related Potential which occurs 300 ms after onset of stimuli\\
+P300: Positive deflection of an Event-Related Potential which occurs 300 ms after onset of stimulus\\
 ITR: Information Transfer Rate\\
-BTR: Bit Transfer Rate}
+BTR: Bit Transfer Rate\\
+SIFT: Scale Invariant Feature Transform\\
+HOG: Histogram Of Gradients}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% optional
