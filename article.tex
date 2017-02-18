@@ -80,7 +80,7 @@ $^{1}$ \quad Computer Engineering Department, Instituto Tecnológico de Buenos A
 %\simplesumm{}
 
 % Abstract (Do not use inserted blank lines, i.e. \\) 
-\abstract{The analysis of Electroencephalograpy (EEG) signals for Amyotrophic Lateral Sclerosis (ALS) patients is of ulterior importance to elucidate different patterns or markers that could be potentially used to aid in diagnosis or treatment. Additionally, it will improve the implementation of Brain Computer Interface (BCI) systems which may provide alternative pathways to transmit volitional information to enhance patient's quality of life.  Of particular interests are those which are based on the recognition of Event-Related Potentials (ERP) which are shown to be more robust to the unavoidable physical impairment which comes with this motor neuron disease.  This work mimics what electroencephalographers have been doing clinically, visually inspecting and categorizing phenomena within the EEG, and provides a framework to analyse and characterize EEG signals, with a focus on the P300, an ERP elicited by the oddball paradigm of rare events.  The validity of the method is shown by off-line processing a public dataset of ALS patients.}
+\abstract{The analysis of Electroencephalograpy (EEG) signals for Amyotrophic Lateral Sclerosis (ALS) patients is of ulterior importance to elucidate different patterns or markers that could improve the implementation of Brain Computer Interface (BCI). These systems are meant to provide alternative pathways to transmit volitional information which could potentially enhance patient's quality of life.  Of particular interests are those which are based on the recognition of Event-Related Potentials (ERP), shown to be more robust to the unavoidable physical impairment which comes with this motor neuron disease.  This work mimics what electroencephalographers have been doing clinically, visually inspecting and categorizing phenomena within the EEG, and provides a framework to analyse and characterize EEG signals, with a focus on the P300, an ERP elicited by the oddball paradigm of rare events.  The validity of the method is shown by off-line processing a public dataset of ALS patients.}
 
 % Keywords
 \keyword{electroencephalography (EEG); BCI; P300; ALS; classification; HOG; SIFT}
@@ -137,7 +137,7 @@ $^{1}$ \quad Computer Engineering Department, Instituto Tecnológico de Buenos A
 %\end{enumerate}
 
 
-Although recent advances in neuroimagining techniques (particularly radio-nuclear and radiological scanning methods) \citep{Schomer2010} have diminished the prospects of the traditional Electroencephalography (EEG), the advent and development of digitalized devices has pressed for a revamping of this hundredth years old technology.  Their versatility, ease of use, temporal resolution, ease of development and fabrication, and its proliferation as consumer devices, are pushing EEG to become the de-facto non invasive method to access and harness brain information.
+Although recent advances in neuroimagining techniques (particularly radio-nuclear and radiological scanning methods) \citep{Schomer2010} have diminished the prospects of the traditional Electroencephalography (EEG), the advent and development of digitalized devices has pressed for a revamping of this hundredth years old technology.  Their versatility, ease of use, temporal resolution, ease of development and fabrication, and its proliferation as consumer devices, are pushing EEG to become the de-facto non invasive portable or ambulatory method to access and harness brain information \cite{DeVos2014}
 
 Key contribution to this development has been the field of Brain Computer Interfaces (BCI) \citep{WolpawJonathanR2012} which is the pursuit of the development of a new channel of communication particularly aimed to persons affected by neuro-degenerative diseases.
 
@@ -145,9 +145,10 @@ One noteworthy aspect of this novel communication channel is the ability to voli
 
 EEG signals are remarkably complex and have been characterized as a multichannel non-stationary stochastic process and even considered random enough as to be used as a source of pseudo random number generator \citep{Chen2014}. Additionally, they have high variability between different subjects and even between different moments for the same subject, requiring an adaptive and co-adaptive calibration and learning procedures \citep{Clerc}.  Hence, this imposes an outstanding challenge that is necessary to overcome in order to extract information from raw EEG signals.
 
-EEG markers \citep{Clerc} that can be used to volitionally transmit information are limited, and each one of them has a particular set or combination of appropriate methods to decode them. Inevitably, it is often necessary to implement many distinct and specialized algorithmic methods, to filter the signal, enhance its SNR, and try to determine some meaning out of it.  
+EEG markers \citep{Clerc} that can be used to volitionally transmit information are limited, and each one of them has a particular set or combination of appropriate methods to decode them. Inevitably, it is often necessary to implement many distinct and specialized algorithmic methods, to filter the signal, enhance its SNR, and try to determine some meaning out of it.  NEED REVIEW Patients suffering from ALS their brain signals do suffer slow and deteriorating changes that may lead to different EEG patterns alterations \citep{Nijboer2009,Riener2014}.
 
-Besides novel applications of BCI, the goal of the entire discipline is to provide communication assistance to people affected by neuro-degenerative diseases.  It is understood that for people suffering from ALS, even though this pathology do not harm the CNS, their brain signals do suffer slow and deteriorating changes that may lead to different EEG patterns alterations \citep{Nijboer2009,Riener2014}.
+
+%Besides novel applications of BCI, the goal of the entire discipline is to provide communication assistance to people affected by neuro-degenerative diseases.  It is understood that for people suffering from ALS, even though this pathology do not harm the CNS, their brain signals do suffer slow and deteriorating changes that may lead to different EEG patterns alterations \citep{Nijboer2009,Riener2014}.
 
 BCI has gained mainstream public awareness and recently even held a peculiar Olympics \citep{Riener2014} and been broadcasted during the inauguration ceremony of the 2014 Soccer World Cup.  New developments have overcome the out-of-the-lab high-bar and they are starting to be used in real world environments \citep{Huggins2016}.  However, they still lack the necessary robustness, and its performance is well behind any other method of human computer interaction, including any kind of detection of remaining muscular movement \citep{Clerc}.
 
@@ -160,13 +161,13 @@ In brief, this paper reports a straightforward method to, first characterize EEG
 
 \section{Materials and Methods}
 
-To verify the validity of the proposed framework and method, the public dataset 008-2014  \citep{Riccio2013} published on the BNCI-Horizon website \citep{Brunner2014} was used to perform a binary classification task on the provided signals.  The algorithm was implemented using the VLFeat  \citep{Vedaldi2010} Computer Vision libraries on MATLAB 2014a (Mathworks Inc., Natick, MA, USA). 
+To verify the validity of the proposed framework and method, the public dataset 008-2014  \citep{Riccio2013} published on the BNCI-Horizon website \citep{Brunner2014} by  IRCCS Fondazione Santa Lucia, was used to perform a binary classification task on the provided signals.  The algorithm was implemented using the VLFeat  \citep{Vedaldi2010} Computer Vision libraries on MATLAB 2014a (Mathworks Inc., Natick, MA, USA). 
 
 \subsection{Experimental protocol}
 
-The protocol is explained in \citep{Riccio2013} but can be summarized as follows:  8 subjects with confirmed diagnoses but on different stages of ALS disease, were recruited and accepted to perform the experiments. The P300 \citep{Knuth2006} is a positive deflection of the EEG signal which occurs 300 ms after the onset of a rare and deviant stimulus that the subject is expected to attend.  It is produced under the oddball paradigm \cite{WolpawJonathanR2012} and tough it is quite consistent across different subjects, it is small ( $ \pm 5 \mu V $ ) compared to the ongoing EEG activity.  The P300 detection task designed for this experiment was meant to spell 7 words of 5 letter each, using the traditional P300 Speller Matrix, where the flashings of rows and columns provide the deviant stimulus required to elicit this physiological response.  The first 3 runs were used for training and the remaining 4 for testing with visual feedback.  A trial, for this experiment, was defined as every attempt to select a letter from the speller, and it was composed of signal segments corresponding to 10 repetitions of flashes of 6 rows and 6 columns of the traditional 6x6 P300 matrix , yielding 120 repetitions.  Flashing of row/columns was performed for 0.125 s, following by a resting period of the same length.  After 120 repetitions an inter-trial pause was included before resuming with the following letter.
+The protocol is explained in \citep{Riccio2013} but can be summarized as follows:  8 subjects with confirmed diagnoses but on different stages of ALS disease, were recruited and accepted to perform the experiments. The P300 \citep{Knuth2006} is a positive deflection of the EEG signal which occurs 300 ms after the onset of a rare and deviant stimulus that the subject is expected to attend.  It is produced under the oddball paradigm \cite{WolpawJonathanR2012} and though it is quite consistent across different subjects, it is small ( $ \pm 5 \mu V $ ) compared to the ongoing EEG activity.  The P300 detection task designed for this experiment was meant to spell 7 words of 5 letter each, using the traditional P300 Speller Matrix, where the flashings of rows and columns provide the deviant stimulus required to elicit this physiological response.  The first 3 runs were used for training and the remaining 4 for testing with visual feedback.  A trial, for this experiment, was defined as every attempt to select a letter from the speller, and it was composed of signal segments corresponding to 10 repetitions of flashes of 6 rows and 6 columns of the traditional 6x6 P300 matrix , yielding 120 repetitions.  Flashing of row/columns was performed for 0.125 s, following by a resting period of the same length.  After 120 repetitions an inter-trial pause was included before resuming with the following letter.
 
-The gathered dataset was sampled at 256 Hz and consisted of an EEG matrix for electrode channels Fz,Cz,Pz,Oz,P3,P4,PO7 and PO8, identified according to the 10-20 International System,  for each one of the 8 subjects.  
+The recorded dataset was sampled at 256 Hz and consisted of an EEG matrix for electrode channels Fz,Cz,Pz,Oz,P3,P4,PO7 and PO8, identified according to the 10-20 International System,  for each one of the 8 subjects.  
 
 
 %\subsection{Morphological Signal Analysis}
@@ -198,7 +199,7 @@ The proposed algorithm was developed to perform a binary classification task, de
 
 \subsubsection{Preprocessing}
 
-The mandatory first step is to enhance the SNR of the P300 pattern above the level of basal EEG. The processing pipeline starts by applying a notch filter to the raw signal, a decimation with an FIR filter of order 30 from the original 256 Hz to 32 Hz and finally applying a 4th degree 10 Hz lowpass Butterworth filter.  
+The mandatory first step is to enhance the SNR of the P300 pattern above the level of basal EEG. The processing pipeline starts by applying a notch filter to the raw signal, a 4th degree 10 Hz lowpass Butterworth filter and finally a decimation with an FIR filter of order 30 from the original 256 Hz to 32 Hz.  
 
 \subsubsection{Segmentation, Artefact Removal and Signal Averaging}
 
@@ -206,7 +207,7 @@ The EEG matrix is processed on a channel by channel basis.  For each word, each 
 
 From every segment of 12 flashings, two epoch were obtained when the signal was labelled as \textit{hit} and two when the signal was labelled as a \textit{no-hit} of 1s length both (256 sample points).  
 
-These segments, 20 for each class, are later point-to-point averaged for the whole trial. It is important to remark that only 2 out of 10 available segments marked as a \textit{no-hit} were extracted in order to avoid generating unbalanced averaging signals (see Results section \ref{section:results}). This finally led to 2 averaged signals for each of the 5 letters, for the 7 words, comprising a set of 70 averaged signals \citep{Liang2008}.
+These segments, 20 for each class, are later point-to-point averaged for the whole 120 repetitions. It is important to remark that only 2 out of 10 available segments marked as a \textit{no-hit} were extracted in order to avoid generating unbalanced averaging signals (see Results section \ref{section:results}). This finally led to 2 averaged signals for each of the 5 letters, for the 7 words, comprising a set of 70 averaged signals \citep{Liang2008}.
 
 
 \subsubsection{Features}
@@ -356,19 +357,19 @@ The ITR, or BTR, in the case of reactive BCIs \citep{WolpawJonathanR2012} strong
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Discussion}
-%
-%This method, different from other methods which is based on the nonlinearity of the gradient of histograms which can be used to detect 
-%
-%is also based on how the image look like.
-%
-%SNR of p300 and how to detect it
-%
-%Check if you can use this to detect any kind of transient signal.
-%
-%Compare if it is possible with the descriptors from one subject, discriminate the others.
-%
-%Channal identification based on the metric distance between the bags
+\section{Discussion}
+
+This method, different from other methods which is based on the nonlinearity of the gradient of histograms which can be used to detect 
+
+is also based on how the image look like.
+
+SNR of p300 and how to detect it
+
+Check if you can use this to detect any kind of transient signal.
+
+Compare if it is possible with the descriptors from one subject, discriminate the others.
+
+Channal identification based on the metric distance between the bags
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
